@@ -20,10 +20,12 @@ class UserController extends Controller
     {
         return view('pages.auth.registration-page');
     }
+
     function SendOtpPage()
     {
         return view('pages.auth.send-otp-page');
     }
+
     function VerifyOTPPage()
     {
         return view('pages.auth.verify-otp-page');
@@ -48,21 +50,21 @@ class UserController extends Controller
         try {
             User::create([
                 'firstName' => $request->input('firstName'),
-                'lastName' => $request->input('lastName'),
-                'email' => $request->input('email'),
-                'mobile' => $request->input('mobile'),
-                'password' => $request->input('password'),
+                'lastName'  => $request->input('lastName'),
+                'email'     => $request->input('email'),
+                'mobile'    => $request->input('mobile'),
+                'password'  => $request->input('password'),
             ]);
             // User::create($request->all());
             return response()->json([
-                'status' => 'success',
-                'message' => 'User Registration Successfully'
+                'status'    => 'success',
+                'message'   => 'User Registration Successfully'
             ], 200);
         } catch (Exception $e) {
             return response()->json([
-                'status' => 'failed',
-                'message' => 'User Registration Failed'
-            ], 400);
+                'status'    => 'failed',
+                'message'   => 'User Registration Failed'
+            ], 401);
         }
     }
 
@@ -78,13 +80,14 @@ class UserController extends Controller
             // User Login-> JWT Token Issue
             $token = JWTToken::CreateToken($request->input('email'), $count->id);
             return response()->json([
-                'status' => 'success',
-                'message' => 'User Login Successful',
+                'status'    => 'success',
+                'message'   => 'User Login Successful',
+                'token'     => $token
             ], 200)->cookie('token', $token, time() + 60 * 24 * 30);
         } else {
             return response()->json([
-                'status' => 'failed',
-                'message' => 'unauthorized'
+                'status'    => 'failed',
+                'message'   => 'unauthorized'
             ], 200);
         }
     }
@@ -114,6 +117,7 @@ class UserController extends Controller
                 'message' => 'unauthorized'
             ]);
         }
+
     }
 
 
