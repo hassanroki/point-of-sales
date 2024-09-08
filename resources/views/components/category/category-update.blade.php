@@ -48,12 +48,12 @@
         else{
             document.getElementById('update-modal-close').click();
             showLoader();
-            let res = await axios.post("/update-category",{name:categoryName,id:updateID})
+            let res = await axios.post("/update-category",{name:categoryName, id:updateID})
             hideLoader();
 
             if(res.status===200 && res.data===1){
                 document.getElementById("update-form").reset();
-                successToast("Request success !")
+                successToast("Update success !")
                 await getList();
             }
             else{
