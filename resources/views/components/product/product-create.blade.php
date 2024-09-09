@@ -106,7 +106,7 @@
             hideLoader();
 
             if(res.status===201){
-                successToast('Request completed');
+                successToast('Created Success!');
                 document.getElementById("save-form").reset();
                 await getList();
             }

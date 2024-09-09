@@ -77,7 +77,7 @@
 
             if(res.status===200 && res.data===1){
 
-                successToast('Request completed');
+                successToast('Updated!');
 
                 document.getElementById("update-form").reset();
 

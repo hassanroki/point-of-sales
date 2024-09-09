@@ -56,7 +56,7 @@
 
             if(res.status===201){
 
-                successToast('Request completed');
+                successToast('Create Success!');
 
                 document.getElementById("save-form").reset();
 

@@ -27,7 +27,7 @@
             let res=await axios.post("/delete-product",{id:id,file_path:deleteFilePath})
             hideLoader();
             if(res.data===1){
-                successToast("Request completed")
+                successToast("Deleted Success!")
                 await getList();
             }
             else{

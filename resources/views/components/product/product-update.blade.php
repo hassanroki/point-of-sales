@@ -133,7 +133,7 @@
             hideLoader();
 
             if(res.status===200 && res.data===1){
-                successToast('Request completed');
+                successToast('Updated Success!');
                 document.getElementById("update-form").reset();
                 await getList();
             }
